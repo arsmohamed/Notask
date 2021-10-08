@@ -11,11 +11,7 @@ import {
   DownCircleOutlined,
   UpCircleOutlined,
 } from "@ant-design/icons";
-// import NotesIcon from '@material-ui/icons/Notes';
-// import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-// import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-// import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoNotask from "../UI/logo";
 import Button from "../UI/Button";
 // import { useHistory } from "react-router-dom";
@@ -72,30 +68,30 @@ const NavBar = (props) => {
     marginTop: "10px",
     marginRight: "8px",
     fontSize: "28px",
-    // color: props.RecieveColor.NavIconColor
+    color: props.RecieveColor.NavIconColor
   };
   const DifferentRouteStyle = {
     marginTop: "10px",
     marginRight: "8px",
     fontSize: "32px",
-    // color: props.RecieveColor.NavIconColor
+    color: props.RecieveColor.NavIconColor
   }; 
   const IconsNavChange = {
     marginTop: "10px",
     marginRight: "4px",
     fontSize: "36px",
-    // color: props.RecieveColor.NavIconColor
+    color: props.RecieveColor.NavIconColor
   }; 
   const LogoutIconStyle = {
     marginTop: "15px",
     marginLeft: "8px",
     fontSize: "18px",
-    // color: props.RecieveColor.NavIconColor
+    color: props.RecieveColor.NavIconColor
   };  
   const LogOutStyle = {
     marginRight: "8px",
     fontSize: "22px",
-    // color: props.RecieveColor.NavIconColor,
+    color: props.RecieveColor.NavIconColor,
   };
 
   /*************************************************** UserName And Avatar *****************************************************************************/
@@ -224,13 +220,13 @@ const NavBar = (props) => {
   //   : <MdNotes style={IconsNavChange} />
 
   /*************************************************** change Link to Login *****************************************************************************/
-  // const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/login" : "/signup"} >
-  //   {props.CallingPage === "Signin" ?
-  //       <LoginOutlined  style={VisibilityStle1} />
-  //   :
-  //       <LogoutOutlined style={VisibilityStle1} />
-  //     }
-  //   </Link>
+  const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/" : "/signup"} >
+    {props.CallingPage === "Signin" ?
+        <LoginOutlined  style={VisibilityStle1} />
+    :
+        <LogoutOutlined style={VisibilityStle1} />
+      }
+    </Link>
 
   /*************************************************** lang Drop Down *****************************************************************************/
   // const ButtonLangOption = props.inCalendar ? null : UserLogged ? <LangSelection
@@ -318,7 +314,7 @@ const NavBar = (props) => {
         {buttonsList.map((button) => {
           return (
             <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}  >
-              {/* {GoToLogin} */}
+              {GoToLogin}
               <div style={{
                  color: props.RecieveColor.UserInputFC,  
                  fontSize: "1.2em",  marginTop: "12px",  }}  >

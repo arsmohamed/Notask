@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "./App.css"; 
 
 import Login from "./Routes/Login/Login";
-import Button from "./UI/Button";
+import Signup from "./Routes/Signup/Signup"; 
 
 const ContainerDiv = styled.div`
   font-family: "Montserrat", sans-serif;  
@@ -68,10 +68,14 @@ class App extends Component {
         <ContainerDiv BodyColorValue={this.state.Color.BodyColor}>
           <Route 
             path="/" 
-            exact 
-            render={(props) => 
+            exact render={(props) => 
               <Login Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
-        />
+          />
+          <Route 
+            path="/signup" 
+            exact render={(props) => 
+            <Signup Location={(value) =>this.setState({location: value})} Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
+          />
         </ContainerDiv> 
       </HashRouter>
       )
