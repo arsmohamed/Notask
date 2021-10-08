@@ -6,6 +6,7 @@ import "./App.css";
 import Login from "./Routes/Login/Login";
 import Signup from "./Routes/Signup/Signup"; 
 import Notes from "./Routes/Notes/Notes" ;
+import Calendar from "./Routes/Calendar/Calendar";
 
 const ContainerDiv = styled.div`
   font-family: "Montserrat", sans-serif;  
@@ -67,6 +68,11 @@ class App extends Component {
     return ( 
       <HashRouter>
         <ContainerDiv BodyColorValue={this.state.Color.BodyColor}>
+          <Route 
+            path="/calendar" 
+            exact render={(props) => 
+            <Calendar Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
+          />
           <Route 
             path="/login" 
             exact render={(props) => 
