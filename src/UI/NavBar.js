@@ -109,10 +109,10 @@ const NavBar = (props) => {
     <div style={{ display: "flex", minWidth: "fit-content" }}>
       <UserIcon
         username={props.username}
-        // OnChangedColor={props.RecieveColor}
+        OnChangedColor={props.RecieveColor}
       />
       <DisplayedUsername 
-      // TextColorInput={props.RecieveColor.UserIconTextColor}
+      TextColorInput={props.RecieveColor.UserIconTextColor}
       >
         <span style={{ fontWeight: "bold" }}>{props.username}</span>
       </DisplayedUsername>
@@ -172,9 +172,9 @@ const NavBar = (props) => {
             resizeValue={"both"}
             text={"Logout"}
             LeftValue={"70%"}
-            // backGroundColorValue={props.RecieveColor.ToggleButton}
-            // FontColorValue={props.RecieveColor.IconC}
-            // borderColorValue={props.RecieveColor.BorderColor}
+            backGroundColorValue={props.RecieveColor.ToggleButton}
+            FontColorValue={props.RecieveColor.IconC}
+            borderColorValue={props.RecieveColor.BorderColor}
             icon={<LogoutOutlined style={LogOutStyle} />}
             />
           </FadeIn> 
@@ -192,9 +192,9 @@ const NavBar = (props) => {
             resizeValue={"both"}
             text={"login"}
             LeftValue={"70%"}
-            // backGroundColorValue={props.RecieveColor.LogSignColor}
-            // FontColorValue={props.RecieveColor.IconC}
-            // borderColorValue={props.RecieveColor.BorderColor}
+            backGroundColorValue={props.RecieveColor.LogSignColor}
+            FontColorValue={props.RecieveColor.IconC}
+            borderColorValue={props.RecieveColor.BorderColor}
             icon={<LogoutOutlined style={LogOutStyle} />}
             /> 
           </FadeIn>
@@ -239,9 +239,12 @@ const NavBar = (props) => {
   // /> : null
 
   /*************************************************** change The Color *****************************************************************************/
-  const ColorSwitcher = UserLogged ? <div style={{marginRight : "4px"}}>
+  const ColorSwitcher = 
+  // UserLogged ? 
+  <div style={{marginRight : "4px"}}>
         <SwitchIcon OnChangedColor={props.ColorChanged} style={{marginRight : "4px"}}/>
-      </div> : null
+      </div> 
+      // : null
 
   /*************************************************** Weather  *****************************************************************************/
   const [isWeather, ChnageisWeather] = useState(true)
@@ -249,7 +252,9 @@ const NavBar = (props) => {
     const FinishToggle = () => (ChnageisWeather(true))
     return(setTimeout(FinishToggle,1000))
   }
-  const IsWeather =UserLogged ? (isWeather ?
+  const IsWeather =
+  // UserLogged ? 
+  (isWeather ?
          <Button
             onClick={()=>ChnageisWeather(false)} 
             position={"relative"}
@@ -267,9 +272,12 @@ const NavBar = (props) => {
             marginRightValue={"50px"}
             marginTopValue={"2px"}
             icon={<WiDayCloudy color={props.RecieveColor.ToggleButton} size={"42px"} />}
-            />) : null 
+            />) 
+            // : null 
             
-  const WeatherButton = !isWeather ? (UserLogged ?<div
+  const WeatherButton = !isWeather ? (
+    // UserLogged ?
+    <div
       style={{zIndex: "7",position: "absolute",display: "flex",justifyContent: "flex-end",right: "10%",top: "52px"}}>
         <Model
           display={"flex"}
@@ -281,15 +289,18 @@ const NavBar = (props) => {
           boxShadowValue= {"0 1px 5px rgb(138, 137, 137)"}
           borderRadiusValue= {"7px"}
           resizeValue={"both"}
-          // backGroundColorValue={props.d.ToggleButton}
-          // FontColorValue={props.d.IconC}
-          // borderColorValue={props.d.BorderColor}
+          backGroundColorValue={props.d.ToggleButton}
+          FontColorValue={props.d.IconC}
+          borderColorValue={props.d.BorderColor}
           icon={<LogoutOutlined style={LogOutStyle} />}
             >
               <Weather_Icon SRC={props.WeatherIcon}/>
               <div style={{marginTop: "10px"}}>{props.WeatherMessage}</div>
         </Model>
-      </div>: null ): null
+      </div>
+      // : null 
+      )
+      : null
 
   /*************************************************** NavBar  *****************************************************************************/
   return (
@@ -309,7 +320,7 @@ const NavBar = (props) => {
             <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}  >
               {/* {GoToLogin} */}
               <div style={{
-                //  color: props.RecieveColor.UserInputFC,  
+                 color: props.RecieveColor.UserInputFC,  
                  fontSize: "1.2em",  marginTop: "12px",  }}  >
                 {button.text}
               </div>
