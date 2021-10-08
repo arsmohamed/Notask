@@ -15,10 +15,10 @@ import {
 // import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 // import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 // import NoteAddOutlinedIcon from '@material-ui/icons/NoteAddOutlined';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import LogoNotask from "../UI/logo";
 import Button from "../UI/Button";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import API from "../API/API";
 // import LangSelection from "../Routes/Calendar/DataCollection/LangSelection";
 import Model from "../UI/Modal";
@@ -72,30 +72,30 @@ const NavBar = (props) => {
     marginTop: "10px",
     marginRight: "8px",
     fontSize: "28px",
-    color: props.RecieveColor.NavIconColor
+    // color: props.RecieveColor.NavIconColor
   };
   const DifferentRouteStyle = {
     marginTop: "10px",
     marginRight: "8px",
     fontSize: "32px",
-    color: props.RecieveColor.NavIconColor
+    // color: props.RecieveColor.NavIconColor
   }; 
   const IconsNavChange = {
     marginTop: "10px",
     marginRight: "4px",
     fontSize: "36px",
-    color: props.RecieveColor.NavIconColor
+    // color: props.RecieveColor.NavIconColor
   }; 
   const LogoutIconStyle = {
     marginTop: "15px",
     marginLeft: "8px",
     fontSize: "18px",
-    color: props.RecieveColor.NavIconColor
+    // color: props.RecieveColor.NavIconColor
   };  
   const LogOutStyle = {
     marginRight: "8px",
     fontSize: "22px",
-    color: props.RecieveColor.NavIconColor,
+    // color: props.RecieveColor.NavIconColor,
   };
 
   /*************************************************** UserName And Avatar *****************************************************************************/
@@ -109,9 +109,11 @@ const NavBar = (props) => {
     <div style={{ display: "flex", minWidth: "fit-content" }}>
       <UserIcon
         username={props.username}
-        OnChangedColor={props.RecieveColor}
+        // OnChangedColor={props.RecieveColor}
       />
-      <DisplayedUsername TextColorInput={props.RecieveColor.UserIconTextColor}>
+      <DisplayedUsername 
+      // TextColorInput={props.RecieveColor.UserIconTextColor}
+      >
         <span style={{ fontWeight: "bold" }}>{props.username}</span>
       </DisplayedUsername>
       {props.showLogOutButton ? 
@@ -159,7 +161,7 @@ const NavBar = (props) => {
         {UserLogged ?
           <FadeIn>
             <Button
-            onClick={handlingLoggingOut}
+            // onClick={handlingLoggingOut}
             position={"relative"}
             width={"140px"}
             padding={"15px"}
@@ -170,16 +172,16 @@ const NavBar = (props) => {
             resizeValue={"both"}
             text={"Logout"}
             LeftValue={"70%"}
-            backGroundColorValue={props.RecieveColor.ToggleButton}
-            FontColorValue={props.RecieveColor.IconC}
-            borderColorValue={props.RecieveColor.BorderColor}
+            // backGroundColorValue={props.RecieveColor.ToggleButton}
+            // FontColorValue={props.RecieveColor.IconC}
+            // borderColorValue={props.RecieveColor.BorderColor}
             icon={<LogoutOutlined style={LogOutStyle} />}
             />
           </FadeIn> 
           :
           <FadeIn>
             <Button
-            onClick={handlingLoggingIn}
+            // onClick={handlingLoggingIn}
             position={"relative"}
             width={"140px"}
             padding={"15px"}
@@ -190,9 +192,9 @@ const NavBar = (props) => {
             resizeValue={"both"}
             text={"login"}
             LeftValue={"70%"}
-            backGroundColorValue={props.RecieveColor.LogSignColor}
-            FontColorValue={props.RecieveColor.IconC}
-            borderColorValue={props.RecieveColor.BorderColor}
+            // backGroundColorValue={props.RecieveColor.LogSignColor}
+            // FontColorValue={props.RecieveColor.IconC}
+            // borderColorValue={props.RecieveColor.BorderColor}
             icon={<LogoutOutlined style={LogOutStyle} />}
             /> 
           </FadeIn>
@@ -200,41 +202,41 @@ const NavBar = (props) => {
       </div> : null
   
   /*************************************************** change to calendar link *****************************************************************************/
-  const [isCalendar, ChangeIsCalendar] = useState(false);
-  const GoToCalendar = props.inCalendar ? 
-    (isCalendar ? 
-      (<MdCalendarToday onMouseEnter={() => ChangeIsCalendar(false)} style={DifferentRouteStyle} />)  
-      : 
-      (<Link to={"/calendar"}> 
-        <MdEditCalendar  onMouseLeave={() => ChangeIsCalendar(true)} style={IconsNavChange} />
-        </Link>)) 
-    : <MdEditCalendar  style={IconsNavChange} />
+  // const [isCalendar, ChangeIsCalendar] = useState(false);
+  // const GoToCalendar = props.inCalendar ? 
+  //   (isCalendar ? 
+  //     (<MdCalendarToday onMouseEnter={() => ChangeIsCalendar(false)} style={DifferentRouteStyle} />)  
+  //     : 
+  //     (<Link to={"/calendar"}> 
+  //       <MdEditCalendar  onMouseLeave={() => ChangeIsCalendar(true)} style={IconsNavChange} />
+  //       </Link>)) 
+  //   : <MdEditCalendar  style={IconsNavChange} />
     
   /*************************************************** change to Notes link *****************************************************************************/
-  const [isNote, ChangeIsNote] = useState(true);
-  const GoToNote = props.inNotes ? 
-    (isNote ? 
-      (<MdSpeakerNotes onMouseEnter={() => ChangeIsNote(false)} style={DifferentRouteStyle} />)  
-      : 
-      (<Link to={"/"} >
-      <MdNotes   onMouseLeave={() => ChangeIsNote(true)} style={IconsNavChange} />
-        </Link>)) 
-    : <MdNotes style={IconsNavChange} />
+  // const [isNote, ChangeIsNote] = useState(true);
+  // const GoToNote = props.inNotes ? 
+  //   (isNote ? 
+  //     (<MdSpeakerNotes onMouseEnter={() => ChangeIsNote(false)} style={DifferentRouteStyle} />)  
+  //     : 
+  //     (<Link to={"/"} >
+  //     <MdNotes   onMouseLeave={() => ChangeIsNote(true)} style={IconsNavChange} />
+  //       </Link>)) 
+  //   : <MdNotes style={IconsNavChange} />
 
   /*************************************************** change Link to Login *****************************************************************************/
-  const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/login" : "/signup"} >
-    {props.CallingPage === "Signin" ?
-        <LoginOutlined  style={VisibilityStle1} />
-    :
-        <LogoutOutlined style={VisibilityStle1} />
-      }
-    </Link>
+  // const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/login" : "/signup"} >
+  //   {props.CallingPage === "Signin" ?
+  //       <LoginOutlined  style={VisibilityStle1} />
+  //   :
+  //       <LogoutOutlined style={VisibilityStle1} />
+  //     }
+  //   </Link>
 
   /*************************************************** lang Drop Down *****************************************************************************/
-  const ButtonLangOption = props.inCalendar ? null : UserLogged ? <LangSelection
-    RecievedColor={props.RecieveColor}
-    TheCalndarlang={(value) =>props.LangOption(value)}
-  /> : null
+  // const ButtonLangOption = props.inCalendar ? null : UserLogged ? <LangSelection
+  //   RecievedColor={props.RecieveColor}
+  //   TheCalndarlang={(value) =>props.LangOption(value)}
+  // /> : null
 
   /*************************************************** change The Color *****************************************************************************/
   const ColorSwitcher = UserLogged ? <div style={{marginRight : "4px"}}>
@@ -279,9 +281,9 @@ const NavBar = (props) => {
           boxShadowValue= {"0 1px 5px rgb(138, 137, 137)"}
           borderRadiusValue= {"7px"}
           resizeValue={"both"}
-          backGroundColorValue={props.RecieveColor.ToggleButton}
-          FontColorValue={props.RecieveColor.IconC}
-          borderColorValue={props.RecieveColor.BorderColor}
+          // backGroundColorValue={props.d.ToggleButton}
+          // FontColorValue={props.d.IconC}
+          // borderColorValue={props.d.BorderColor}
           icon={<LogoutOutlined style={LogOutStyle} />}
             >
               <Weather_Icon SRC={props.WeatherIcon}/>
@@ -298,15 +300,17 @@ const NavBar = (props) => {
       <RightNavBarItems>
         {WeatherButton}
         {IsWeather}
-        {ButtonLangOption}
+        {/* {ButtonLangOption} */}
         {ColorSwitcher}
-        {GoToCalendar}
-        {GoToNote}
+        {/* {GoToCalendar} */}
+        {/* {GoToNote} */}
         {buttonsList.map((button) => {
           return (
             <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}  >
-              {GoToLogin}
-              <div style={{ color: props.RecieveColor.UserInputFC,  fontSize: "1.2em",  marginTop: "12px",  }}  >
+              {/* {GoToLogin} */}
+              <div style={{
+                //  color: props.RecieveColor.UserInputFC,  
+                 fontSize: "1.2em",  marginTop: "12px",  }}  >
                 {button.text}
               </div>
             </div>
