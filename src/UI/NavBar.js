@@ -16,7 +16,7 @@ import LogoNotask from "../UI/logo";
 import Button from "../UI/Button";
 import { useHistory } from "react-router-dom";
 import API from "../API/API";
-// import LangSelection from "../Routes/Calendar/DataCollection/LangSelection";
+import LangSelection from "../Routes/Calendar/DataCollection/LangSelection";
 import Model from "../UI/Modal";
 import Weather_Icon from "../UI/WeatherIcon";
 /*************************************************** Style Area *****************************************************************************/
@@ -195,15 +195,15 @@ const NavBar = (props) => {
       </div> : null
   
   /*************************************************** change to calendar link *****************************************************************************/
-  // const [isCalendar, ChangeIsCalendar] = useState(false);
-  // const GoToCalendar = props.inCalendar ? 
-  //   (isCalendar ? 
-  //     (<MdCalendarToday onMouseEnter={() => ChangeIsCalendar(false)} style={DifferentRouteStyle} />)  
-  //     : 
-  //     (<Link to={"/calendar"}> 
-  //       <MdEditCalendar  onMouseLeave={() => ChangeIsCalendar(true)} style={IconsNavChange} />
-  //       </Link>)) 
-  //   : <MdEditCalendar  style={IconsNavChange} />
+  const [isCalendar, ChangeIsCalendar] = useState(true);
+  const GoToCalendar = props.inCalendar ? 
+    (isCalendar ? 
+      (<MdCalendarToday onMouseEnter={() => ChangeIsCalendar(false)} style={DifferentRouteStyle} />)  
+      : 
+      (<Link to={"/calendar"}> 
+        <MdEditCalendar  onMouseLeave={() => ChangeIsCalendar(true)} style={IconsNavChange} />
+        </Link>)) 
+    : <MdEditCalendar  style={IconsNavChange} />
     
   /*************************************************** change to Notes link *****************************************************************************/
   const [isNote, ChangeIsNote] = useState(true);
@@ -226,10 +226,13 @@ const NavBar = (props) => {
     </Link>
 
   /*************************************************** lang Drop Down *****************************************************************************/
-  // const ButtonLangOption = props.inCalendar ? null : UserLogged ? <LangSelection
-  //   RecievedColor={props.RecieveColor}
-  //   TheCalndarlang={(value) =>props.LangOption(value)}
-  // /> : null
+  const ButtonLangOption = props.inCalendar ? null : 
+  // UserLogged ?
+   <LangSelection
+    RecievedColor={props.RecieveColor}
+    TheCalndarlang={(value) =>props.LangOption(value)}
+  /> 
+  // : null
 
   /*************************************************** change The Color *****************************************************************************/
   const ColorSwitcher = <div style={{marginRight : "4px"}}>
@@ -293,9 +296,9 @@ const NavBar = (props) => {
       <RightNavBarItems>
         {WeatherButton}
         {IsWeather}
-        {/* {ButtonLangOption} */}
+        {ButtonLangOption}
         {ColorSwitcher}
-        {/* {GoToCalendar} */}
+        {GoToCalendar}
         {GoToNote}
         {buttonsList.map((button) => {
           return (
