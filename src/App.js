@@ -5,6 +5,7 @@ import "./App.css";
 
 import Login from "./Routes/Login/Login";
 import Signup from "./Routes/Signup/Signup"; 
+import Notes from "./Routes/Notes/Notes" ;
 
 const ContainerDiv = styled.div`
   font-family: "Montserrat", sans-serif;  
@@ -67,7 +68,7 @@ class App extends Component {
       <HashRouter>
         <ContainerDiv BodyColorValue={this.state.Color.BodyColor}>
           <Route 
-            path="/" 
+            path="/login" 
             exact render={(props) => 
               <Login Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
           />
@@ -76,6 +77,11 @@ class App extends Component {
             exact render={(props) => 
             <Signup Location={(value) =>this.setState({location: value})} Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
           />
+           <Route 
+            path="/" 
+            exact render={(props) => 
+            <Notes Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
+          /> 
         </ContainerDiv> 
       </HashRouter>
       )
