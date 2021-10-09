@@ -74,20 +74,20 @@ class App extends Component {
             <Calendar Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
           />
           <Route 
-            path="/login" 
-            exact render={(props) => 
-              <Login Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
-          />
-          <Route 
             path="/signup" 
             exact render={(props) => 
             <Signup Location={(value) =>this.setState({location: value})} Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
           />
            <Route 
-            path="/" 
+            path="/Notes" 
             exact render={(props) => 
             <Notes Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
           /> 
+          <Route 
+            path="/" 
+            exact render={(props) => 
+              <Login Color={this.state.Color} colorchanged={this.ChangeColorsValue}/>}
+          />
         </ContainerDiv> 
       </HashRouter>
       )

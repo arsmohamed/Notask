@@ -59,6 +59,7 @@ class Notes extends Component {
         WeatherIcon: "",
         userLoggedIn: false
       };
+      
     //Close is not hovered on color style
     VisibilityStle1 = {
         marginRight: "8px",

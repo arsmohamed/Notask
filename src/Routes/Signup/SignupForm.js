@@ -16,8 +16,8 @@ import Button from "../../UI/Button";
 import FadeIn  from "react-fade-in";
 import validator from "validator";
 import { Link } from "react-router-dom";
-// import API from "../../API/API";
-// import { useHistory } from "react-router-dom";
+import API from "../../API/API";
+import { useHistory } from "react-router-dom";
 import passwordValidator from "password-validator";
 
 const InfoContainer = styled.div`
@@ -484,7 +484,7 @@ const SignupForm = (props) => {
         }}
         >{SubmissionMessage}</span>
         </InfoContainer>
-    // let history = useHistory()
+    let history = useHistory()
     const SignUp = () => {
         if(PassWordValue !== ConfirmPasswordValue) {
             return (ChangepasswordSpecial(false), ChangeCPWPassValidation(false))
@@ -495,25 +495,24 @@ const SignupForm = (props) => {
         ){
             return ChangeValidSubmission(true)
         }
-        // API.singUp(
-        //     FirstNameValue,
-        //     LastNameValue,
-        //     UserNameValue,
-        //     EmailValue,
-        //     PassWordValue,
-        //     CountryValue,
-        //     ProvinceValue,
-        //     CityValue,
-        //     ZipCodeValue,
-        //     ()=> history.push("/"),
-        //     (err) => {
-        //         if (err) {
-                    console.log("err")
-                    // console.log(err)
-        //             ChangeBEError(true)
-        //         }
-        //     }
-        // )
+        API.singUp(
+            FirstNameValue,
+            LastNameValue,
+            UserNameValue,
+            EmailValue,
+            PassWordValue,
+            CountryValue,
+            ProvinceValue,
+            CityValue,
+            ZipCodeValue,
+            ()=> history.push("/"),
+            (err) => {
+                if (err) {
+                    console.log(err)
+                    ChangeBEError(true)
+                }
+            }
+        )
     }
 
     /*********************** Submission Button ************************************/  
@@ -537,12 +536,19 @@ const SignupForm = (props) => {
         />
     </FadeIn>
 
-const ReturnToLogin =<FadeIn>
-        <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
-            Already have an acount ?  
-            <Link to={"/login"} style={{color : props.RecieveColor.IconC }}> Login</Link>
-        </span>
-    </FadeIn>
+    /*********************** Login and Guest Area ************************************/  
+    const ReturnToLogin =<FadeIn>
+            <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
+                Already have an acount ?  
+                <Link to={"/login"} style={{color : props.RecieveColor.IconC }}> Login</Link>
+            </span>
+        </FadeIn>
+    const LoginAsGuest =  <FadeIn>
+            <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
+                Login as a :  
+                <Link to={"/Notes"} style={{color : props.RecieveColor.IconC }}> Guest</Link>
+            </span>
+        </FadeIn>
 
 return (
     <FadeIn>
@@ -575,6 +581,7 @@ return (
         {SignupButton}
         <hr style={{marginBottom : "10px"}}></hr>
         {ReturnToLogin}
+        {LoginAsGuest}
         </NoteContainer>
     </FadeIn>
 );

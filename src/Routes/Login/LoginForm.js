@@ -7,7 +7,7 @@ import Button from "../../UI/Button";
 import FadeIn  from "react-fade-in";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import API from "../../API/API";
+import API from "../../API/API";
 import validator from "validator";
 
 /*************************** Style Area ********************************/    
@@ -143,14 +143,14 @@ const SignupForm = (props) => {
             ChangePasswordPH("PLease Enter a Password. -_-")
         }else {
             console.log("object")
-            // API.login( 
-            //     EmailValue, 
-            //     PasswordValue,
-            //     () => (history.push("/")),
-            //     (e) => {
-            //         ChangeEmailValidOrPassword(true)
-            //     }
-            // )
+            API.login( 
+                EmailValue, 
+                PasswordValue,
+                () => (history.push("/")),
+                (e) => {
+                    ChangeEmailValidOrPassword(true)
+                }
+            )
         }
     }   
    const LoginButton = <FadeIn>
@@ -171,13 +171,21 @@ const SignupForm = (props) => {
             icon = {<LoginOutlined style={ButtonIconColor}/>}
             />
         </FadeIn>
+        
+    /*********************** Login and Guest Area ************************************/  
+    const ReturnToLogin =<FadeIn>
+            <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
+            Create Account : 
+                <Link to={"/signup"} style={{color : props.RecieveColor.IconC }}> SignUp</Link>
+            </span>
+        </FadeIn>
 
-const ReturnToLogin =<FadeIn>
-        <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
-           Create Account : 
-            <Link to={"/signup"} style={{color : props.RecieveColor.IconC }}> SignUp</Link>
-        </span>
-    </FadeIn>
+    const LoginAsGuest =  <FadeIn>
+            <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
+                Login as a :  
+                <Link to={"/Notes"} style={{color : props.RecieveColor.IconC }}> Guest</Link>
+            </span>
+        </FadeIn>
 
 return <FadeIn>
         <NoteContainer
@@ -197,6 +205,7 @@ return <FadeIn>
             {LoginButton}
             <hr style={{marginBottom : "10px"}}></hr>
             {ReturnToLogin}
+            {LoginAsGuest}
         </NoteContainer>
     </FadeIn> 
 };
