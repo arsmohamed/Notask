@@ -196,25 +196,25 @@ const NavBar = (props) => {
   
   /*************************************************** change to calendar link *****************************************************************************/
   const [isCalendar, ChangeIsCalendar] = useState(true);
-  const GoToCalendar = props.inCalendar ? 
+  const GoToCalendar = (props.Route == "Notes" || props.Route == "Calendar") ?  (props.inCalendar ? 
     (isCalendar ? 
       (<MdCalendarToday onMouseEnter={() => ChangeIsCalendar(false)} style={DifferentRouteStyle} />)  
       : 
       (<Link to={"/calendar"}> 
         <MdEditCalendar  onMouseLeave={() => ChangeIsCalendar(true)} style={IconsNavChange} />
         </Link>)) 
-    : <MdEditCalendar  style={IconsNavChange} />
+    : <MdEditCalendar  style={IconsNavChange} />) : null
     
   /*************************************************** change to Notes link *****************************************************************************/
   const [isNote, ChangeIsNote] = useState(true);
-  const GoToNote = props.inNotes ? 
+  const GoToNote = (props.Route == "Notes" || props.Route == "Calendar") ? (props.inNotes ? 
     (isNote ? 
       (<MdSpeakerNotes onMouseEnter={() => ChangeIsNote(false)} style={DifferentRouteStyle} />)  
       : 
       (<Link to={"/Notes"} >
       <MdNotes   onMouseLeave={() => ChangeIsNote(true)} style={IconsNavChange} />
         </Link>)) 
-    : <MdNotes style={IconsNavChange} />
+    : <MdNotes style={IconsNavChange} />) : null
 
   /*************************************************** change Link to Login *****************************************************************************/
   const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/" : "/signup"} >
