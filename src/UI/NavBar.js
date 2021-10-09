@@ -217,11 +217,25 @@ const NavBar = (props) => {
     : <MdNotes style={IconsNavChange} />) : null
 
   /*************************************************** change Link to Login *****************************************************************************/
-  const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/" : "/signup"} >
-    {props.CallingPage === "Signin" ?
-        <LoginOutlined  style={VisibilityStle1} />
-    :
-        <LogoutOutlined style={VisibilityStle1} />
+  // const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/" : "/signup"} >
+  //   {props.CallingPage === "Signin" ?
+  //       <LoginOutlined  style={VisibilityStle1} />
+  //   :
+  //       <LogoutOutlined style={VisibilityStle1} />
+  //     }
+  //   </Link>
+
+  const GoToLogin =<Link style={{textDecoration:"none"}} to={props.CallingPage == "Signin" ? "/" : "/signup"} >
+      {props.CallingPage === "Signin" ?
+        <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}>
+          <LoginOutlined  style={VisibilityStle1} />
+          <div style={{ color: props.RecieveColor.UserInputFC,  fontSize: "1.2em",  marginTop: "12px",  }}>Sing Up</div> 
+        </div>
+        :
+        <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}>
+          <LogoutOutlined style={VisibilityStle1} />
+          <div style={{ color: props.RecieveColor.UserInputFC,  fontSize: "1.2em",  marginTop: "12px",  }}>Login</div> 
+        </div>
       }
     </Link>
 
@@ -299,7 +313,8 @@ const NavBar = (props) => {
         {ColorSwitcher}
         {GoToCalendar}
         {GoToNote}
-        {buttonsList.map((button) => {
+        {GoToLogin}
+        {/* {buttonsList.map((button) => {
           return (
             <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}  >
               {GoToLogin}
@@ -308,7 +323,7 @@ const NavBar = (props) => {
               </div>
             </div>
           );
-        })}
+        })} */}
         {usernameAndAvatar}
         {props.ShowLogOutButtonValue ? ButtonIsLogOut  : null}
       </RightNavBarItems>

@@ -540,13 +540,13 @@ const SignupForm = (props) => {
     const ReturnToLogin =<FadeIn>
             <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
                 Already have an acount ?  
-                <Link to={"/login"} style={{color : props.RecieveColor.IconC }}> Login</Link>
+                <Link to={"/"} style={{color : props.RecieveColor.IconC, textDecoration:"none" }}> Login</Link>
             </span>
         </FadeIn>
     const LoginAsGuest =  <FadeIn>
             <span style={{color: props.RecieveColor.UserInputFC , fontSize: "1.2em" }}>
                 Login as a :  
-                <Link to={"/Notes"} style={{color : props.RecieveColor.IconC }}> Guest</Link>
+                <Link to={"/Notes"} style={{color : props.RecieveColor.IconC, textDecoration:"none" }}> Guest</Link>
             </span>
         </FadeIn>
 
