@@ -130,19 +130,19 @@ const CalendarForm = (props) => {
         ChangeToggleTitle(true),
         ChangeTitleValue(value.event._def.title),
         ChangeStartValue(value.event._instance.range.start.toString().slice(0, 24)))
-      return(props.isLoggedIn ? setTimeout(ReturnToggle,500) : null)
+      return(setTimeout(ReturnToggle,500))
   }
   const HandleMouseLeave = () => {
     const FinishToggle = () => (ChangeToggleTitle(false), ChangeTitleValue(""))
     return(setTimeout(FinishToggle,500))
   }
-  const ShowTitle = props.isLoggedIn ? <div style={{ zIndex: "3", position: "absolute", left: "35%", top: "0px", marginTop: "52px" }}>
+  const ShowTitle = <div style={{ zIndex: "3", position: "absolute", left: "35%", top: "0px", marginTop: "52px" }}>
     <HoverTitle 
       ScheduleColor={props.CalendarColor} //send color form App
       isTitle={TitleValue} //Passing Down the title
       isStart={StartValue} //Passing Down the time
       />
-    </div> : null
+    </div>
     
 
   /*************************************************** calendar Form *****************************************************************************/

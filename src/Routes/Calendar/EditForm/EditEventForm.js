@@ -7,10 +7,7 @@ import DisplayOption from "./Containers/DisplayContainer";
 import RDContainer from "../ScheduleForm/Containers/DaysContainer"; 
 import SubmitChanges from './Bottons/submitChanges'; 
 import FadeIn from "react-fade-in";
-import { CloseCircleOutlined, EditFilled, EditOutlined } from "@ant-design/icons";
-
-// import MdDateRange from '@material-ui/icons/DateRange';
-// import MdAddAlert from '@material-ui/icons/AddAlert';
+import { CloseCircleOutlined, EditFilled, EditOutlined } from "@ant-design/icons"; 
 import { MdDateRange, MdAddAlert } from "react-icons/md";
 
 

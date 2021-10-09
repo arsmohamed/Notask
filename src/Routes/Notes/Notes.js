@@ -5,46 +5,56 @@ import CreateNote from './CreateNote/CreateNote'
 import Footer from '../../UI/Footer'
 import FadeIn from 'react-fade-in';
 import API from "../../API/API";
+import { CloudDownloadOutlined, CloudFilled } from '@ant-design/icons';
 
-// const foreCast = require('../../WeatherApp/WeatherStack');
-// const GeoCode = require('../../WeatherApp/GeoCoding');
+const foreCast = require('../../WeatherApp/WeatherStack');
+const GeoCode = require('../../WeatherApp/GeoCoding');
 
 class Notes extends Component {
 
     //to get the notes from the DB if any
-    // async componentDidMount() {
-    //   const isLoggedIn = await API.isLoggedIn(()=>{});
-    //   if (isLoggedIn) {
-    //     await API.isLoggedIn(e => this.setState({
-    //       userLoggedIn: true,
-    //       UserName : e.data.userName,
-    //       city : e.data.city,
-    //       province: e.data.province,
-    //       county: e.data.county
-    //     }))
-    //     const PrevNotes = [...this.state.notes];
-    //     const DBNotes = await API.GetNote();
-    //     const MergedNotes = DBNotes.data.concat(PrevNotes);
-    //       GeoCode( this.state.city ,this.state.province ,this.state.country ,Callback =>{
-    //         if(!Callback.latitude || !Callback.longitude){
-    //             return console.log({error: 'please enter an address'})
-    //         }
-    //         foreCast(Callback.latitude , Callback.longitude , (error, foreCastData, WeatherIcon, Location)=>{
-    //             this.setState({Weather : foreCastData, WeatherIcon: WeatherIcon})
-    //         })
-    //       })
-    //     return this.setState({ notes: MergedNotes});
-    //   }  
-    // }
+    async componentDidMount() {
+      const isLoggedIn = await API.isLoggedIn(()=>{});
+      if (isLoggedIn) {
+        await API.isLoggedIn(e => this.setState({
+          userLoggedIn: true,
+          UserName : e.data.userName,
+          city : e.data.city,
+          province: e.data.province,
+          country: e.data.country
+        }))
+        const PrevNotes = [...this.state.notes];
+        const DBNotes = await API.GetNote();
+        const MergedNotes = DBNotes.data.concat(PrevNotes);
+          GeoCode( this.state.city ,this.state.province ,this.state.country ,Callback =>{
+            if(!Callback.latitude || !Callback.longitude){
+                return console.log({error: 'please enter an address'})
+            }
+            foreCast(Callback.latitude , Callback.longitude , (error, foreCastData, WeatherIcon, Location)=>{
+                this.setState({Weather : foreCastData, WeatherIcon: WeatherIcon})
+            })
+          })
+        return this.setState({ notes: MergedNotes});
+      }
+      GeoCode( this.state.city ,this.state.province ,this.state.country ,Callback =>{
+          if(!Callback.latitude || !Callback.longitude){
+              return console.log({error: 'please enter an address'})
+          }
+          foreCast(Callback.latitude , Callback.longitude , (error, foreCastData, WeatherIcon, Location)=>{
+              this.setState({Weather : foreCastData, WeatherIcon: WeatherIcon})
+          })
+        })
+    }
+
     state = {
         notes: [],
         isLogOut: false,
         ChangetitleClicked: true,
         ChangeContentClicked:true,
         UserName: "Welcome Guest",
-        city:"",
-        province:"",
-        county:"",
+        city:"Toronto",
+        province:"Ontario",
+        country:"Canada",
         Weather: "",
         WeatherIcon: "",
         userLoggedIn: false
@@ -142,6 +152,7 @@ class Notes extends Component {
           inNotes={false}
           WeatherMessage={this.state.Weather}
           WeatherIcon={this.state.WeatherIcon}
+          Route={"Notes"} // this will help the navebar to know which route to show the weather 
         />
         </div>
         <FadeIn>

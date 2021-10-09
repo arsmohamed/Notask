@@ -8,6 +8,7 @@ const params = {
 const foreCast = (latitude, longitude, callback) => {
   axios.get('http://api.weatherstack.com/current?query=' + encodeURIComponent(latitude)+','+encodeURIComponent(longitude), {params})
   .then(response => {
+    console.log(response.data)
     if(response.data.error) {
       callback('Unable to find Location !',undefined)
     }else{
@@ -20,6 +21,7 @@ const foreCast = (latitude, longitude, callback) => {
       const city = `${ApiResponse.location.name}`
       const Location = `${country}/${province}/${city}`
       callback(undefined, message, WeatherIcon, Location);
+      console.log(message, WeatherIcon, Location)
       }
     })
     .catch(error => {

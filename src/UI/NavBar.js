@@ -226,13 +226,11 @@ const NavBar = (props) => {
     </Link>
 
   /*************************************************** lang Drop Down *****************************************************************************/
-  const ButtonLangOption = props.inCalendar ? null : 
-  // UserLogged ?
+  const ButtonLangOption = props.inCalendar ? null :
    <LangSelection
     RecievedColor={props.RecieveColor}
     TheCalndarlang={(value) =>props.LangOption(value)}
   /> 
-  // : null
 
   /*************************************************** change The Color *****************************************************************************/
   const ColorSwitcher = <div style={{marginRight : "4px"}}>
@@ -240,52 +238,53 @@ const NavBar = (props) => {
       </div>
 
   /*************************************************** Weather  *****************************************************************************/
-  const [isWeather, ChnageisWeather] = useState(true)
+  const [isWeather, ChangeisWeather] = useState(true)
   const HandleMouseLeave = () => {
-    const FinishToggle = () => (ChnageisWeather(true))
+    const FinishToggle = () => (ChangeisWeather(true))
     return(setTimeout(FinishToggle,1000))
   }
-  const IsWeather =(isWeather ?
-         <Button
-            onClick={()=>ChnageisWeather(false)} 
-            position={"relative"}
-            width={"0px"}
-            marginRightValue={"50px"}
-            marginTopValue={"8px"}
-            icon={<WiDayCloudy color={props.RecieveColor.ToggleButton} size={"35px"} />}
-            /> 
-            :
-            <Button
-            onClick={()=>ChnageisWeather(true)}
-            onMouseLeave={HandleMouseLeave}
-            position={"relative"}
-            width={"0px"}
-            marginRightValue={"50px"}
-            marginTopValue={"2px"}
-            icon={<WiDayCloudyHigh color={props.RecieveColor.ToggleButton} size={"42px"} />}
-            />)
+  // showing the weather Icon or not 
+  const IsWeather = (props.Route == "Notes" || props.Route == "Calendar") ? (isWeather ? 
+    <Button
+      onClick={()=>ChangeisWeather(false)} 
+      position={"relative"}
+      width={"0px"}
+      marginRightValue={"50px"}
+      marginTopValue={"8px"}
+      icon={<WiDayCloudy color={props.RecieveColor.ToggleButton} size={"35px"} />}
+      /> 
+      :
+      <Button
+      onClick={()=>ChangeisWeather(true)}
+      onMouseLeave={HandleMouseLeave}
+      position={"relative"}
+      width={"0px"}
+      marginRightValue={"50px"}
+      marginTopValue={"2px"}
+      icon={<WiDayCloudyHigh color={props.RecieveColor.ToggleButton} size={"42px"} />}
+      />) : null
             
-  const WeatherButton = !isWeather ? (UserLogged ?<div
-      style={{zIndex: "7",position: "absolute",display: "flex",justifyContent: "flex-end",right: "10%",top: "52px"}}>
-        <Model
-          display={"flex"}
-          flexDirectionValue={"row"}
-          position= {"relative"}
-          width= {"305px"}
-          margin= {"15px"}
-          padding= {"10px"}
-          boxShadowValue= {"0 1px 5px rgb(138, 137, 137)"}
-          borderRadiusValue= {"7px"}
-          resizeValue={"both"}
-          backGroundColorValue={props.RecieveColor.ToggleButton}
-          FontColorValue={props.RecieveColor.IconC}
-          borderColorValue={props.RecieveColor.BorderColor}
-          icon={<LogoutOutlined style={LogOutStyle} />}
-            >
-              <Weather_Icon SRC={props.WeatherIcon}/>
-              <div style={{marginTop: "10px"}}>{props.WeatherMessage}</div>
-        </Model>
-      </div>: null ): null
+  const WeatherButton = !isWeather  ?
+    <div style={{zIndex: "7",position: "absolute",display: "flex",justifyContent: "flex-end",right: "10%",top: "52px"}}>
+      <Model
+        display={"flex"}
+        flexDirectionValue={"row"}
+        position= {"relative"}
+        width= {"305px"}
+        margin= {"15px"}
+        padding= {"10px"}
+        boxShadowValue= {"0 1px 5px rgb(138, 137, 137)"}
+        borderRadiusValue= {"7px"}
+        resizeValue={"both"}
+        backGroundColorValue={props.RecieveColor.ToggleButton}
+        FontColorValue={props.RecieveColor.IconC}
+        borderColorValue={props.RecieveColor.BorderColor}
+        icon={<LogoutOutlined style={LogOutStyle} />}
+          >
+            <Weather_Icon SRC={props.WeatherIcon}/>
+            <div style={{marginTop: "10px"}}>{props.WeatherMessage}</div>
+      </Model>
+    </div>: null
 
   /*************************************************** NavBar  *****************************************************************************/
   return (

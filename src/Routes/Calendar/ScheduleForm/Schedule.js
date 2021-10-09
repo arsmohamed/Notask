@@ -8,11 +8,6 @@ import DisplayContainer from "./Containers/DisplayContainer";
 import RDContainer from "./Containers/DaysContainer";
 import SubmitButton from "./Containers/SubmitButton";
 import { CloseCircleOutlined, CloseOutlined } from "@ant-design/icons"; 
-
-// import MdDateRange from '@material-ui/icons/DateRange';
-// import MdAddAlert from '@material-ui/icons/AddAlert';
-// import MdRadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
-// import MdRadioButtonChecked from '@material-ui/icons/RadioButtonChecked';
 import { MdDateRange, MdAddAlert, MdRadioButtonUnchecked, MdRadioButtonChecked } from "react-icons/md";
 
 const EachateContainer = styled.div`

@@ -1,6 +1,4 @@
 import axios from "axios"
-// const foreCast = require('../WeatherApp/WeatherStack');
-// const GeoCode = require('../WeatherApp/GeoCoding');
 
 class API {
     //for signup 
