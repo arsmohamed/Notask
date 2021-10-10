@@ -300,8 +300,8 @@ const NavBar = (props) => {
           <LogoNotask/>
       </LeftNavBarItems>
       <RightNavBarItems>
-        {WeatherButton}
-        {IsWeather}
+        {/* {WeatherButton} */}
+        {/* {IsWeather} */}
         {ButtonLangOption}
         {ColorSwitcher}
         {GoToCalendar}
