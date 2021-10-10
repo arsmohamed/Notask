@@ -25,8 +25,8 @@ app.use(function (req, res, next) {
 //it pasrse our json to an object so we can access in our request handler 
 app.use(express.json())
 app.use(UserRouter);
-// app.use(NoteRouter);
-// app.use(CalendarEventsRouter);
+app.use(NoteRouter);
+app.use(CalendarEventsRouter);
 
 app.listen(port , () => {
     console.log("Server is up and Running on port " + port)
