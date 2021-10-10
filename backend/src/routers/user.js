@@ -7,7 +7,6 @@ const sgMail = require('@sendgrid/mail')
 const sendgridAPIKey= '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'
 sgMail.setApiKey(sendgridAPIKey)
 
-
 //SignUp
 router.post("/Users", async (req, res) => {
   const user = new User(req.body); //take the info from the website and then save it in user
