@@ -31,10 +31,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "node backend/src/notask.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node backend/src/notask.js"
   },
   "eslintConfig": {
     "extends": [
