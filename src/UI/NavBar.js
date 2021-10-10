@@ -217,15 +217,8 @@ const NavBar = (props) => {
     : <MdNotes style={IconsNavChange} />) : null
 
   /*************************************************** change Link to Login *****************************************************************************/
-  // const GoToLogin =<Link to={props.CallingPage == "Signin" ? "/" : "/signup"} >
-  //   {props.CallingPage === "Signin" ?
-  //       <LoginOutlined  style={VisibilityStle1} />
-  //   :
-  //       <LogoutOutlined style={VisibilityStle1} />
-  //     }
-  //   </Link>
-
-  const GoToLogin =<Link style={{textDecoration:"none"}} to={props.CallingPage == "Signin" ? "/" : "/signup"} >
+  const GoToLogin =(props.Route == "Notes" || props.Route == "Calendar") ? null : 
+    <Link style={{textDecoration:"none"}} to={props.CallingPage == "Signin" ? "/" : "/signup"} >
       {props.CallingPage === "Signin" ?
         <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}>
           <LoginOutlined  style={VisibilityStle1} />
@@ -314,16 +307,6 @@ const NavBar = (props) => {
         {GoToCalendar}
         {GoToNote}
         {GoToLogin}
-        {/* {buttonsList.map((button) => {
-          return (
-            <div  style={{ display: "flex ", flexDirection: "row",  marginLeft: "6px",  }}  >
-              {GoToLogin}
-              <div style={{ color: props.RecieveColor.UserInputFC,  fontSize: "1.2em",  marginTop: "12px",  }}  >
-                {button.text}
-              </div>
-            </div>
-          );
-        })} */}
         {usernameAndAvatar}
         {props.ShowLogOutButtonValue ? ButtonIsLogOut  : null}
       </RightNavBarItems>
